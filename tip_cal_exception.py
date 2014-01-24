@@ -25,20 +25,24 @@ def calculate_meal_costs(meal_base, tax_rate, tip_rate):
 
 
 def main ():
+
+	meal = float(sys.argv[1])
+	tip  = float(sys.argv[2])
+	tax  = float(sys.argv[3])
+	meal_info = calculate_meal_costs(meal,tax,tip)	
 	try:
-		meal = float(sys.argv[1])
-		tip  = float(sys.argv[2])
-		tax  = float(sys.argv[3])
-
-		meal_info = calculate_meal_costs(meal,tip,tax)
-
+		meal
+		tip
+		tax
+		meal_info
+		
 	except ValueError:
 		print("Sorry, you must supply numbers for all input parameters to this script. Try again.")
-						
+	
 	print "The base cost of your meal was ${0:.2f}.".format(meal_info['meal_base'])
 	print "You need to pay ${0:.2f} for tax.".format(meal_info['tax_rate'])
 	print "Tipping at a rate of {0}%, you should leave ${1:.2f} for a tip.".format(
-	                                                        int(meal_info['tip_rate']/100), meal_info['tax_value'])
+	                                                        int(100*meal_info['tip_rate']), meal_info['tax_value'])
 	print "The grand total of your meal is ${0:.2f}.".format(meal_info['total'])
 
 
